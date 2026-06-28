@@ -1,0 +1,293 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 80px 32px 60px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 60px;
+  align-items: center;
+  width: 100%;
+}
+
+.left { display: flex; flex-direction: column; }
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #c6f135;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+/* FIX 1: clean headline — no broken outline treatment */
+.h1 {
+  font-size: clamp(52px, 7vw, 96px);
+  font-weight: 800;
+  line-height: 0.97;
+  letter-spacing: -0.04em;
+  margin-bottom: 28px;
+}
+
+.white { display: block; color: #fff; }
+
+/* "interfaces" — fully filled lime, clearly intentional */
+.green {
+  display: block;
+  color: #c6f135;
+}
+
+.sub {
+  font-size: 15px;
+  color: #555;
+  max-width: 480px;
+  line-height: 1.75;
+  margin-bottom: 36px;
+}
+
+/* FIX 2: only 2 buttons, always side by side */
+.btns {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 52px;
+}
+
+.btnGreen {
+  background: #c6f135;
+  color: #080808;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 40px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Syne', sans-serif;
+  transition: transform 0.15s;
+  white-space: nowrap;
+}
+.btnGreen:hover { transform: scale(1.04); }
+
+.btnDark {
+  background: transparent;
+  color: #aaa;
+  border: 1px solid #222;
+  padding: 13px 26px;
+  border-radius: 40px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  transition: border-color 0.2s, color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+.btnDark:hover { border-color: #c6f135; color: #c6f135; }
+
+/* FIX 3: honest stats */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid #141414;
+  padding-top: 32px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-right: 20px;
+  border-right: 1px solid #141414;
+}
+.stat:last-child { border-right: none; padding-right: 0; }
+.stat:not(:first-child) { padding-left: 20px; }
+
+.statNum {
+  font-size: 36px;
+  font-weight: 800;
+  color: #c6f135;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+.statLbl { font-size: 11px; color: #444; line-height: 1.3; }
+
+/* ── Photo (desktop) ── */
+.photoWrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.photo {
+  width: 100%;
+  max-width: 360px;
+  height: 460px;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 20px;
+  border: 1px solid #1c1c1c;
+  display: block;
+}
+
+.photoBadge {
+  position: absolute;
+  bottom: 24px;
+  left: -16px;
+  background: #111;
+  border: 1px solid #1c1c1c;
+  border-radius: 12px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 2;
+}
+
+.badgeIcon { font-size: 20px; }
+.badgeTitle { font-size: 12px; font-weight: 700; color: #e2e2e2; }
+.badgeSub { font-size: 10px; color: #444; }
+
+/* FIX 8: single availability pill — lives on the photo */
+.availPill {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(8,8,8,0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid #2a3d00;
+  padding: 6px 14px;
+  border-radius: 40px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #c6f135;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.pulse {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #c6f135;
+  animation: pulse 2s infinite;
+  flex-shrink: 0;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* ── MOBILE ── */
+@media (max-width: 900px) {
+  .hero {
+    min-height: unset;
+    padding: 76px 0 48px;
+    display: block;
+  }
+
+  .inner {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .photoWrap {
+    order: -1;
+    width: 100%;
+    margin-bottom: 28px;
+  }
+
+  .photo {
+    width: 100%;
+    max-width: 100%;
+    height: 300px;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-bottom: 1px solid #1c1c1c;
+    object-fit: cover;
+    object-position: center 15%;
+  }
+
+  .photoBadge {
+    left: 16px;
+    bottom: 12px;
+    padding: 8px 12px;
+    gap: 8px;
+  }
+  .badgeIcon { font-size: 15px; }
+  .badgeTitle { font-size: 11px; }
+  .badgeSub { font-size: 9px; }
+
+  .availPill {
+    top: 12px;
+    right: 12px;
+    font-size: 10px;
+    padding: 5px 11px;
+  }
+
+  .left { padding: 0 20px; }
+
+  .h1 { font-size: 40px; line-height: 1.0; letter-spacing: -0.03em; }
+
+  .sub { font-size: 14px; }
+
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 20px;
+    padding-top: 28px;
+  }
+  .stat:nth-child(2) { border-right: none; }
+  .stat:nth-child(3) { border-right: 1px solid #141414; padding-left: 0; }
+  .stat:nth-child(4) { border-right: none; }
+  .statNum { font-size: 30px; }
+}
+
+@media (max-width: 480px) {
+  .photo { height: 260px; object-position: center 10%; }
+  .h1 { font-size: 34px; }
+  .btnGreen { padding: 12px 22px; font-size: 12px; }
+  .btnDark { padding: 11px 18px; font-size: 12px; }
+}
+
+/* ── Parallax inner wrapper ── */
+.photoInner {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  height: 460px;
+  will-change: transform;
+}
+
+/* ── Sheen overlay ── */
+.photoSheen {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background: linear-gradient(
+    135deg,
+    rgba(198,241,53,0.06) 0%,
+    transparent 50%,
+    rgba(0,0,0,0.2) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* override photo to fill the inner wrapper */
+.photoInner .photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}

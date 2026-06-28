@@ -1,0 +1,124 @@
+.section { padding: 100px 32px; }
+.inner { max-width: 1100px; margin: 0 auto; }
+
+.sectionTag {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.18em;
+  color: #c6f135; text-transform: uppercase; margin-bottom: 20px;
+  display: flex; align-items: center; gap: 10px;
+}
+.sectionTag::before { content: ''; width: 20px; height: 1px; background: #c6f135; }
+
+.heading {
+  font-size: clamp(32px, 5vw, 54px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 52px;
+}
+.green { color: #c6f135; }
+
+.timeline { display: flex; flex-direction: column; }
+
+.item {
+  display: flex;
+  gap: 0;
+  position: relative;
+  padding-left: 36px;
+  padding-bottom: 48px;
+}
+
+.item::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 14px;
+  bottom: 0;
+  width: 1px;
+  background: #1c1c1c;
+}
+
+.item:last-child::before { display: none; }
+
+.dot {
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #222;
+  flex-shrink: 0;
+}
+
+.active .dot {
+  background: #c6f135;
+  box-shadow: 0 0 10px #c6f13555;
+}
+
+.content { flex: 1; }
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #e2e2e2;
+}
+
+.period {
+  font-size: 12px;
+  font-weight: 600;
+  color: #444;
+  white-space: nowrap;
+}
+
+.periodActive {
+  color: #c6f135;
+  background: #0f1a00;
+  border: 1px solid #2a3d00;
+  padding: 3px 12px;
+  border-radius: 20px;
+}
+
+.company {
+  font-size: 12px;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+.bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.bullet {
+  display: flex;
+  gap: 12px;
+  font-size: 13px;
+  color: #666;
+  line-height: 1.65;
+}
+
+.arrow { flex-shrink: 0; color: #2a2a2a; margin-top: 1px; }
+.arrowActive { color: #c6f135; }
+
+@media (max-width: 580px) {
+  .section { padding: 72px 20px; }
+  .header { flex-direction: column; align-items: flex-start; }
+}
+
+@media (max-width: 480px) {
+  .section { padding: 72px 20px; }
+  .header { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .title { font-size: 17px; }
+}
